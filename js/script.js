@@ -1,115 +1,136 @@
+//function validate() {
 
-	function validateForm(form) {
-	
-		var errMsg = [];
-//		var	result = true;
-		var	form = document.getElementById("regForm");
-	
-			// first name
-	
+		var errMsg = "";
+		var	result = true;
+
+		var radioCheck = document.getElementById ("gender"),
+		 	fields = document.getElementsByName ("[data-error]"),
+		 	form = document.getElementById ("regForm");
+
+  console.log(radioCheck);
+  console.log(fields);
+
+
+		var name = document.getElementById ("firstname").;
 		var namePattern = /[a-zA-Z]/;
-		var name = form.getElementsByClassName("firstname");
-			if(name === null || name === " " || !namePattern.test(name)) {
-				errMsg.push("Prosze podaj poprawne imie.\n");
+
+			if(name === "" || !namePattern.test(name)) {
+				errMsg += "Prosze podaj poprawne imie.\n";
+				result = false;
 			}
-	
+
+
+  console.log(name);
+		var last = document.getElementById ("lastname").value;
 		var lastPattern = /[a-zA-Z]/;
-		var last = form.getElementsByClassName("lastname");
-			if(last === null || last === " " || !lastPattern.test(last)) {
-				errMsg.push("Prosze podaj poprawne imie.\n");
+
+			if(last === "" || !lastPattern.test(last)) {
+				errMsg += "Prosze podaj poprawne nazwisko.\n";
+				result = false;
 			}
-		
+
+  console.log("You clicked this");
+
+		var email = document.getElementById ("email").value;
 		var emailPattern = /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/;
-		var email = form.getElementsByClassName("email");
-			if( email === " " || !emailPattern.test(email) ) {
-				errMsg.push("Email nie poprawny!\n");
+
+			if(email === "" || !emailPattern.test(email)) {
+				errMsg += "Email nie poprawny!\n";
+				result = false;
 			}
-		
-		var phonePattern = /[7-9]{1}[0-9]{9}/;
-		var mobile = form.getElementsByClassName("phone");
-			if (mobile === null || mobile === "" || !phonePattern.test(mobile)) {
-				errMsg.push("Numer telefonu musi sie zaczynac od 7,8 or 9.\n");
-			}
-		
-			if (errMsg.length > 0) {   
-				var msg = "ERRORS:\n\n";
-				
-				for(var i = 0; i < errMsg.length; i++) {
-					msg += errMsg[i] + "\n";
-				}
-				alert(msg);
-				return false; 
-			}
-			 
-	
-		
-		function miastoShow() {
-			var m_show = document.getElementById ("miasto");
-				m_show.setAttribute("visibility", "hidden");
-				document.body.appendChild(m_show);
-				//var miastoMagic= document.getElementById ("miasto");
-			
-				if (m_show)
-				{
-					alert("checked");
-					m_show.style.display = "block";
-					
-				} else {
-					alert("notchecked");
-					m_show.style.display = "none";
-					
-				}
-		}
-		
-		var radioCheck = form.find('input[name="gender"]').click(function() {
-	  		  console.log('You clicked this: ' + this.value);
-	
-			  if(this.value == 'woman'){
-				radioCheck = ('#female').value;
-			  } else if(this.value == 'man'){
-			    radioCheck = ('#male').value;
-			  } 
-			console.log("You selected: " + radioCheck);
-	
-		  return radioCheck;
-		});	
-	}	
-	
 
 
-//(function () {
-//
-//		var form = document.querySelector("#regForm"),
-//			fields = form.querySelectorAll("[data-error]");
-//
-//		form.addEventListener("submit", function (e) {
-//				e.preventDefault();
-//
-//				var errors = [];
-//
-//				for (var i = 0; i < fields.length; i++) {
-//					var field = fields[i];
-//
-//					if (fields.type === "text") {
-//						if (field.value === "") {
-//							errors.push(field.dataset.error);
-//						}
-//					} else if (field.type === "email") {
-//						if (field.value.indexOf("@") === -1) {
-//							errors.push(field.dataset.error);
-//					} else if (field.type === "text") {
-//						var phonePattern = /[7-9]{1}[0-9]{9}/;
-//						var mobile = form.getElementsByClassName("phone");
-//						if (field.value === "" || !phonePattern.test(mobile)) {
-//							errors.push(field.dataset.error);
-//					} else if (fields.type === "select-one") {
-//						if (field.value === "") {
-//							errors.push(field.dataset.error);
-//					}
-//				}
-//			}
-//			console.log(errors);
-//
-//		}, false);
-//
-//})();
+		var mobile = document.getElementById ("phone").value;
+		var phonePattern = /^\d{10}$/;
+
+			if(mobile === "" || !phonePattern.test(mobile)) {
+				errMsg += "Numer telefonu skladac sie z cyfr.\n";
+				result = false;
+			}
+
+
+  console.log("You clicked this");
+
+
+		var kraj = document.querySelector("#kraj"),
+			miasto = document.querySelector("#miasto"),
+			city = document.querySelector("#city");
+
+			kraj.addEventListener("onchange", function() {
+				if(kraj == "Poland") {
+					var array = ["Warszawa", "Krakow", "Poznan"];
+					var selectList = document.createElement("select");
+					miasto.appendChild(selectList);
+
+					for(var i = 0; i < array.length; i++) {
+						var option = document.createElement("option");
+						option.value = array[i];
+						option.text = array[i];
+						selectList.appendChild(option);
+					}
+				} else if(kraj == "Australia") {
+					var array2 = ["Melbourne", "Sydney", "Brisbane"];
+					var selectList2 = document.createElement("select");
+					miasto.appendChild(selectList2);
+
+					for(var j = 0; j < array2.length; j++) {
+						var option2 = document.createElement("option");
+						option2.value = array2[j];
+						option2.text = array2[j];
+						selectList2.appendChild(option2);
+					}
+				}
+			}, false);
+
+  console.log("You clicked this");
+
+			var form = document.getElementById("regForm");
+
+			form.addEventListener("submit", function(e) {
+					e.preventDefault();
+
+					if (errMsg !== "") {
+						for(var i = 0; i < errMsg.length; i++) {
+						//var field = field[i];
+
+						alert(errMsg);
+					}
+
+					return result;
+				}
+			}, false);
+
+  console.log("You clicked this");
+
+// 		var radioCheck = form.find('input[name="gender"]').click(function() {
+// 	  		  console.log('You clicked this: ' + this.value);
+
+// 			  if(this.value == 'woman'){
+// 				radioCheck = ('#female').value;
+// 			  } else if(this.value == 'man'){
+// 			    radioCheck = ('#male').value;
+// 			  }
+// 			console.log("You selected: " + radioCheck);
+
+// 		  return radioCheck;
+// 		});
+
+
+  console.log("You clicked this");
+		var init = function init(form) {
+			//validate();
+			//miastoShow();
+		};
+
+
+  console.log("You clicked this");
+		// var btn = document.querySelector("#btn");
+
+		// btn.addEventListener("submit", init, false);
+
+  	window.onload = init;
+
+  console.log("You clicked this");
+//}
+
+
