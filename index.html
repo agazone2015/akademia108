@@ -4,91 +4,92 @@
 	<meta charset="UTF-8">
 	<title>Mechanizm GitHub Pages</title>
 	<link rel="stylesheet" href="css/style.css">
-	
+		<style>
+
+			.errors {
+				font-size: 14px;
+				color: red;
+				background-color: grey;
+			}
+
+		</style>
 </head>
 <body>
 	<header>
 		<h1>Formularz zgloszenia na szkolenie<br/> "Java Script dla zaawansowanych"</h1>
 	</header>
-	
+
 	<div id="wrapper">
 		<div id="container">
-			<form id="regForm" action="https://formspree.io/agazone@hotmail.com"
-       method="POST">
+			<form id="regForm" action="" method="POST"> <!--https://formspree.io/agazone@hotmail.com -->
+       			<div id="err"></div>
 				<fieldset>
-					<label>
-						<span class="nazwa">Imie: (required)</span>
-						<input type="text" name="firstname" class="firstname" placeholder="Podaj swoje imie" data-error="Podaj poprawne imie" required><br/>
-					</label>
-					<label>
-						<span class="nazwa">Nazwisko: (required)</span>
-						<input type="text" name="lastname" class="lastname" placeholder="Podaj swoje nazwisko" data-error="Podaj poprawne nazwisko" required><br/>
-					</label>
-					<label>
-						<span class="nazwa">Email: (required)</span>
-						<input type="email" name="_replyto" class="email" placeholder="Podaj adress email" data-error="Podaj poprawny email" required><br/>
-					</label>
-					<label>
-						<span class="nazwa">Telefon: (required)</span>
-						<input type="text" name="name" class="phone" placeholder="Podaj numer telefonu" data-error="Podaj poprawny telefon" required>
-					</label>				
+						<label for="firstname">Imie: </label>
+						<input type="text" id="firstname" placeholder="Podaj swoje imie" data-error="Podaj poprawne imie"><br/>
+
+						<label for="lastname">Nazwisko: </label>
+						<input type="text" id="lastname" placeholder="Podaj swoje nazwisko" data-error="Podaj poprawne nazwisko"><br/>
+
+						<label for="email">Email: </label>
+						<input type="email" id="email" placeholder="Podaj adress email" data-error="Podaj poprawny email"><br/>
+
+						<label for="phone">Telefon: </label>
+						<input type="text" id="phone" placeholder="Podaj numer telefonu" data-error="Podaj poprawny telefon">
+
 				</fieldset>
-				
+
 				<fieldset>
-					<label>
-						<span class="nazwa">Kraj: </span>
-						<select name="kraj" data-error="Wybierz Panstwo">
+					<label for="kraj">Kraj: </label>
+						<select id="kraj" name="kraj" data-error="Wybierz Panstwo">
 							<option value="" disabled selected>--Wybierz Panstwo--</option>
-							<option value="Poland" id="Poland">Polska</option>
-							<option value="Australia" id="Australia">Australia</option>
+							<option value="Poland" id="showMiasto"><a href="#miasto"></a>Polska</option>
+							<option value="Australia" id="showCity"><a href="#city"></a>Australia</option>
 						</select>
-					</label>
+
 					<br/>
-					<label>
-						<span class="nazwa">Miasto: Poland</span>
-						<select name="miasto" data-error="Wybierz Miasto">
-							<option value="" disabled selected>--Wybierz Miasto--</option>
+					 <div id="miasto"></div>
+					<!--<label for="miasto">Miasto: Poland</label>
+						<select id="miasto" name="miasto" data-error="Wybierz Miasto">
+							<option value="" disabled selected>Wybierz Miasto</option>
 							<option value="Krakow" id="Krakow">Krakow</option>
 							<option value="Warszawa" id="Warszawa">Warszawa</option>
 							<option value="Gdansk" id="Gdansk">Gdansk</option>
 						</select>
-					</label>
-					<br/>
-					<label>
-						<span class="nazwa">Miasto: Australia</span>
-						<select name="city" data-error="Choose City">
-							<option value="" disabled selected>--Wybierz Miasto--</option>
+					</div>
+					<br/> -->
+					<div id="city"></div>
+					<!--<label for="city">Miasto: Australia</label>
+						<select id="city" name="city" data-error="Choose City">
+							<option value="" disabled selected>Wybierz Miasto</option>
 							<option value="Sydney" id="Sydney">Sydney</option>
 							<option value="Melbourne" id="Melbourne">Melbourne</option>
 							<option value="Brisbane" id="Brisbane">Brisbane</option>
 						</select>
-					</label>	
+					</div> -->
 				</fieldset>
-				
+
 				<fieldset>
-					<label>
-						<span class="nazwa">Plec: (required)</span>
+					<label>Plec: (required)</label>
 						<label>Kobieta: </label>
-						<input type="radio" name="gender" value="woman" id="female" required>
+						<input type="radio" name="gender" value="female" id="fgender">
 						<label>Mezszczyzna: </label>
-						<input type="radio" name="gender" value="man" id="male" required>
-					</label>
+						<input type="radio" name="gender" value="male" id="mgender">
+
 					<br/>
-						<input type="checkbox" name="agreed" id="agreed" value="agreed" data-error="Wyraz zgode na przetwarzanie danych" required><span class="disabled">Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w mojej ofercie pracy dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. z 2002r. Nr 101, poz. 926 ze zm.)</span>
+						<input type="checkbox" name="agreed" id="agreed" value="agreed" data-error="Wyraz zgode na przetwarzanie danych"><span class="disabled">Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w mojej ofercie pracy dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. z 2002r. Nr 101, poz. 926 ze zm.)</span>
 				</fieldset>
-						
+
 				<fieldset>
-					<label>
-						<span class="nazwa">Wiadomosc: </span>
+					<label for="message">Wiadomosc: </label>
 						<br/>
 						<textarea id="message" placeholder="Wpisz wiadomosc lub pytanie..." rows="10" cols="60"></textarea> <br/>
-					</label>
-					<input type="submit" id="btn" name="submit" onclick="validateForm();"  value="Send">
-				</fieldset>	
+
+					<input type="submit" id="btn" name="submit" value="Send">
+				</fieldset>
 			</form>
 		</div>
 	</div>
 
-<script src="js/script.js"></script>	
+<script src="js/script.js"></script>
 </body>
 </html>
