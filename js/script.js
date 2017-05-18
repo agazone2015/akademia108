@@ -29,7 +29,7 @@
 				result = false;
 			}
 
-  console.log("You clicked this");
+
 
 		var email = document.getElementById ("email").value;
 		var emailPattern = /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/;
@@ -49,7 +49,7 @@
 			}
 
 
-  console.log("You clicked this");
+
 
 
 		var kraj = document.querySelector("#kraj"),
@@ -82,7 +82,7 @@
 				}
 			}, false);
 
-  console.log("You clicked this");
+
 
 			var form = document.getElementById("regForm");
 
@@ -100,7 +100,7 @@
 				}
 			}, false);
 
-  console.log("You clicked this");
+
 
 // 		var radioCheck = form.find('input[name="gender"]').click(function() {
 // 	  		  console.log('You clicked this: ' + this.value);
@@ -116,21 +116,21 @@
 // 		});
 
 
-  console.log("You clicked this");
+
 		var init = function init(form) {
 			//validate();
 			//miastoShow();
 		};
 
 
-  console.log("You clicked this");
+
 		// var btn = document.querySelector("#btn");
 
 		// btn.addEventListener("submit", init, false);
 
   	window.onload = init;
 
-  console.log("You clicked this");
+
 //}
 
 
